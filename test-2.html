@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tool</title>
+
+    <style>
+
+        div {
+           
+            width: 1366px;
+
+            height: 768px;
+
+            position: absolute;
+
+            text-align:center;
+            
+            top: 50%;
+            
+            bottom: 50%;
+            
+            right: 50%;
+
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+        }
+        
+        
+
+      .test{
+       width:50px;
+       height:50px;
+       border:1px solid #F00;
+       text-align:center;
+       line-height:50px;
+       }
+
+        p {
+
+            text-align: center;
+            font-family:"楷体";
+
+        }
+
+      
+
+        button {
+
+            display: block;
+
+            margin: 0 auto;
+
+        }
+
+    </style>
+<div style="background-image: url('teacher.png');">
+    
+</head>
+
+<body>
+
+    <div class="child">
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+        <font size="7"><p>教师读书交流</p></font>
+
+        <font size="6"><p class="p1">被抽中的老师将显示在这里</p></font>
+
+        <button>开始抽取</button>
+    </div>
+    
+    <script>
+
+        // var a = Math.floor(Math.random() * (21) + 0);
+
+        var but = document.querySelector('button')
+
+        var p1 = document.querySelector('.p1')
+
+        var a;
+
+        var isTrue = true
+
+        var arr1 = ["章雪莲", "孟会丰", "李萍", "穆童", "杨志军", "刘海婷", "杨金珍", "郑婷", "郭菲", "史鑫卉", "刘琪琪", "胡艳", "孙孝东", "毛艳", "吴渊", "常媛媛", "朱建涛", "张丽娟", "达桂英", "刘军辉", "赵兴东", "何亚莉", "王莉莉", "何萍", "张红军", "杨帆", "刘国丽", "杨文娟", "苏婷婷", "王英", "王建广", "徐哲琼", "孟丹丹", "金娟", "唐亮", "张磊", "李鹏举", "牟欢", "杨晓霞", "焦建", "朱莉茜", "沈书君", "周建峰", "刘冬梅", "刘德林", "柯艳春", "王进"]
+
+        but.addEventListener('click', function() {
+
+            if (isTrue) {
+
+                isTrue = false;
+
+                if (!arr1.length) {
+
+                    // 空数组
+
+                    if (confirm('所有的人都被抽过，是否进行下一轮')) {
+
+                        // 进行下一轮
+
+                        arr1 = ["章雪莲", "孟会丰", "李萍", "穆童", "杨志军", "刘海婷", "杨金珍", "郑婷", "郭菲", "史鑫卉", "刘琪琪", "胡艳", "孙孝东", "毛艳", "吴渊", "常媛媛", "朱建涛", "张丽娟", "达桂英", "刘军辉", "赵兴东", "何亚莉", "王莉莉", "何萍", "张红军", "杨帆", "刘国丽", "杨文娟", "苏婷婷", "王英", "王建广", "徐哲琼", "孟丹丹", "金娟", "唐亮", "张磊", "李鹏举", "牟欢", "杨晓霞", "焦建", "朱莉茜", "沈书君", "周建峰", "刘冬梅", "刘德林", "柯艳春", "王进"]
+
+                    } else {
+
+                        // 不进行下一轮
+
+                        return;
+
+                    }
+
+                }
+
+                but.innerText = '自动点名中'
+
+                var time1 = setInterval(function() {
+
+                    a = arr1[Math.floor(Math.random() * arr1.length)]
+
+                    p1.innerHTML = a;
+
+                }, 100);
+
+                setTimeout(function() {
+
+                    clearInterval(time1)
+
+                    but.innerText = '开始点名'
+
+                    var index = arr1.indexOf(a)
+
+                    arr1.splice(index, 1);
+
+                    isTrue = true
+
+                    console.log(a)
+
+                }, 1000)
+
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>
